@@ -9,6 +9,7 @@
     /* --- COLORES DE MARCA (HEXTECH & GOLD) --- */
     --hextech-gold: #c8aa6e;    /* Dorado de prestigio para bordes y títulos */
     --hextech-gold-dark: #785a28; /* Dorado apagado para estados deshabilitados */
+    --hextech-gold-glow: rgba(200, 170, 110, 0.3); /* Resplandor dorado para hover y focus */
     --hextech-blue: #00cfbc;    /* Azul mágico para botones de acción o "Live" */
     --hextech-blue-glow: rgba(0, 207, 188, 0.2); /* Resplandor para efectos de focus */
 

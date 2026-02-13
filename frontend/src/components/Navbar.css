@@ -3,14 +3,14 @@
     padding: 10px;
     display: flex;
     gap: 20px;
-    height: 60px;
+    height: 70px;
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    border-bottom: 1px solid var(--border-thin);
+    box-shadow: 0 5px 5px var(--hextech-gold-glow);
+    border-bottom: 1px solid var(--hextech-gold);
 }
 
 .nav-link {
@@ -26,4 +26,12 @@
     transition: 0.3s ease-in-out;
 }
 
+.nav-link-right {
+    margin-left: auto;
+}
+
+#Logo {
+    height: 70px;
+    display: block;
+}
 
