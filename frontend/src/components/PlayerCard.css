@@ -1,0 +1,39 @@
+.player-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--hextech-gold);
+  border-radius: 14px;
+  padding: 20px;
+  width: 240px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.player-card:hover {
+  transform: translateY(-4px);
+  background-color: var(--bg-card-hover);
+  box-shadow: 0 0 12px rgba(200, 170, 110, 0.4);
+}
+
+.player-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.player-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--hextech-gold);
+  margin-bottom: 10px;
+}
+
+.player-stats {
+  font-size: 14px;
+  color: #c9c9c9;
+  line-height: 1.6;
+}
+
+.player-stats strong {
+  color: #ffffff;
+}

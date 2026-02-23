@@ -1,8 +1,9 @@
 const express = require("express");
 const { riotGet } = require("../services/riot.service");
+const { getLatestDdragonVersion, getProfileIconUrl } = require("../services/ddragon.service");
 
 const NodeCache = require("node-cache");
-const cache = new NodeCache({ stdTTL: 120 }); // Cache de 2 minutos
+const cache = new NodeCache({ stdTTL: 300 }); // Cache de 5 minutos
 
 const router = express.Router();
 
@@ -72,17 +73,27 @@ router.get("/", async (req, res) => {
         `/riot/account/v1/accounts/by-puuid/${player.puuid}`
       );
 
-      players.push({
-        puuid: player.puuid,
+      const ddVersion = await getLatestDdragonVersion();
+
+      const wins = player.wins;
+    const losses = player.losses;
+    const games = wins + losses;
+
+    // winRate en porcentaje con 1 decimal (ej: 62.4)
+    const winRate = games > 0 ? Math.round((wins / games) * 1000) / 10 : 0;
+
+    players.push({
+        platform: platform.toUpperCase(),
         riotId: `${account.gameName}#${account.tagLine}`,
-        profileIconId: summoner.profileIconId,
-        summonerLevel: summoner.summonerLevel,
-        leaguePoints: player.leaguePoints,
-        wins: player.wins,
-        losses: player.losses,
-        rank: player.rank,
-        hotStreak: player.hotStreak,
-      });
+        iconUrl: getProfileIconUrl(ddVersion, summoner.profileIconId),
+
+        level: summoner.summonerLevel,
+        lp: player.leaguePoints,
+
+        wins,
+        losses,
+        winRate,
+    });
 
       await sleep(80);
     }
