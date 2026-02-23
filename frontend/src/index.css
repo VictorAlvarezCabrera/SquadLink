@@ -62,4 +62,5 @@ body {
     background-color: var(--bg-main);
     font-family: 'Roboto', sans-serif;
     color: var(--text-primary);
+    padding-top: 55px;
 }

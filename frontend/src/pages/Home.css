@@ -1,65 +1,167 @@
-.home-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+/* ---------- Layout base ---------- */
+
+main {
+  width: 100%;
 }
 
-
+.home-section {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  padding: 40px 0 18px;
+  display: grid;
+  gap: 18px;
+}
 
 .home-header {
-    text-align: center;
-    margin-top: 50px;
-
-    h1 {
-        font-size: 48px;
-        color: var(--hextech-gold);
-        text-shadow: 0 0 10px var(--hextech-gold-glow);
-    }
-
-    p {
-        font-size: 18px;
-        color: var(--text-secondary);
-        margin-top: 10px;
-    }
+  text-align: center;
 }
+
+.home-header h1 {
+  margin: 0;
+  font-size: clamp(34px, 4vw, 56px);
+  line-height: 1.05;
+  color: var(--hextech-gold);
+}
+
+.home-header p {
+  margin: 10px 0 0;
+  opacity: 0.85;
+  font-size: clamp(14px, 1.6vw, 18px);
+}
+
+/* ---------- Buscador ---------- */
 
 .search-player {
-    background-color: var(--bg-input);
-    padding: 5px;
-    border-radius: 20px;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
-    margin-top: 30px;
-
-    input {
-        padding: 10px; 
-        border: 1px solid var(--border-thin); 
-        border-radius: 20px 0 0 20px;
-        color: var(--hextech-gold);
-        width: 300px;
-        
-    }
-
-    button { 
-        background-color: var(--hextech-gold); 
-        color: white; 
-        border: 1px solid var(--border-thin); 
-        padding: 10px; 
-        border-radius: 0 20px 20px 0; 
-        cursor: pointer; 
-    }
-
-    button:hover { 
-        background-color: var(--hextech-gold-dark); 
-        transition: 0.3s ease-in-out;
-    }
+  width: min(700px, 100%);
+  margin: 12px auto 0;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
 }
 
+.search-player input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(200, 170, 110, 0.35);
+  background: rgba(9, 20, 40, 0.55);
+  color: #fff;
+  outline: none;
+}
+
+.search-player input::placeholder {
+  opacity: 0.65;
+}
+
+.search-player button {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(200, 170, 110, 0.6);
+  background: rgba(9, 20, 40, 0.75);
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+
+.search-player button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 10px rgba(200, 170, 110, 0.22);
+}
+
+/* ---------- Selector región ---------- */
+
+.region-selector {
+  width: min(420px, 100%);
+  margin: 6px auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.region-selector label {
+  opacity: 0.85;
+}
+
+.region-selector select {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(200, 170, 110, 0.35);
+  background: rgba(9, 20, 40, 0.55);
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ---------- Grid de jugadores ---------- */
+
 .featured-grid {
-  max-width: 1200px;
-  margin: 60px auto;
+  width: min(1200px, 92%);
+  margin: 22px auto 60px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
   justify-items: center;
+  align-items: stretch;
+}
+
+/* ---------- Responsive ---------- */
+
+/* <= 1100px: 3 columnas */
+@media (max-width: 1100px) {
+  .featured-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* <= 820px: inputs siguen en fila pero con menos ancho + 2 columnas */
+@media (max-width: 820px) {
+  .featured-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .search-player {
+    width: 100%;
+    max-width: 620px;
+  }
+}
+
+/* <= 520px: todo en columna + 1 columna de cards */
+@media (max-width: 520px) {
+  .home-section {
+    padding: 28px 0 12px;
+    gap: 14px;
+  }
+
+  .search-player {
+    grid-template-columns: 1fr;
+  }
+
+  .search-player button {
+    width: 100%;
+  }
+
+  .region-selector {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .region-selector select {
+    width: 100%;
+  }
+
+  .featured-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+}
+
+/* <= 360px: apretar un poco paddings */
+@media (max-width: 360px) {
+  .search-player input,
+  .search-player button {
+    padding: 10px 12px;
+  }
 }

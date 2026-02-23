@@ -12,6 +12,7 @@ app.use(express.json());
 // RUTA DE TEST RIOT
 const featuredRouter = require("./src/routes/featured.routes");
 const riotTestRouter = require("./src/routes/riotTest.routes");
+
 app.use("/api/featured", featuredRouter);
 app.use("/api/riot-test", riotTestRouter);
 

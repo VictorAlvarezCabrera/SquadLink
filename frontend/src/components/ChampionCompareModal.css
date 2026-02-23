@@ -1,0 +1,215 @@
+.ccm-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  z-index: 10000;
+}
+
+.ccm-modal{
+  width: min(1100px, 96vw);
+  max-height: calc(100vh - 36px);
+  overflow: auto;
+  border-radius: 18px;
+  border: 1px solid rgba(200,170,110,0.35);
+  background: rgba(9, 20, 40, 0.94);
+  box-shadow: 0 0 22px rgba(0,0,0,0.55);
+}
+
+.ccm-header{
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: rgba(9,20,40,0.98);
+  border-bottom: 1px solid rgba(200,170,110,0.18);
+  backdrop-filter: blur(6px);
+}
+
+.ccm-title{
+  font-weight: 900;
+  letter-spacing: 0.2px;
+  color: rgba(200,170,110,1);
+}
+
+.ccm-close{
+  border: 0;
+  background: transparent;
+  color: rgba(200,170,110,1);
+  font-size: 22px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.ccm-state{
+  padding: 30px 18px;
+  text-align: center;
+}
+
+.ccm-error{ color: #ffb4b4; }
+
+.ccm-content{
+  padding: 14px 16px 22px;
+}
+
+.ccm-heroes{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.ccm-hero{
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(200,170,110,0.22);
+  background: rgba(9,20,40,0.55);
+}
+
+.ccm-hero-icon{
+  width: 76px;
+  height: 76px;
+  border-radius: 14px;
+}
+
+.ccm-hero-name{
+  font-weight: 900;
+  color: rgba(200,170,110,1);
+}
+
+.ccm-hero-title{
+  opacity: 0.85;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.ccm-tags{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.ccm-tag{
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(90,180,255,0.25);
+  background: rgba(90,180,255,0.08);
+}
+.ccm-tag-subtle{ opacity: 0.75; }
+
+.ccm-section{ margin-top: 18px; }
+.ccm-section-title{ margin: 0 0 10px; font-size: 18px; }
+
+/* Tabla */
+.ccm-table{
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(200,170,110,0.18);
+  background: rgba(9,20,40,0.52);
+}
+
+.ccm-row{
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr 0.8fr;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.ccm-row:first-child{ border-top: 0; }
+
+.ccm-head{
+  background: rgba(9,20,40,0.8);
+}
+
+.ccm-cell{
+  padding: 10px 12px;
+  font-size: 13px;
+  opacity: 0.95;
+}
+
+.ccm-statname{
+  font-weight: 800;
+  opacity: 0.95;
+  display: grid;
+  gap: 4px;
+}
+
+.ccm-statlabel{
+  font-weight: 900;
+}
+
+.ccm-statkey{
+  font-size: 11px;
+  opacity: 0.65;
+  font-weight: 600;
+}
+
+.ccm-val{
+  text-align: right;
+  font-weight: 900;
+}
+
+/* ✅ Colores por comparación */
+.ccm-val.is-high{
+  color: #9cffb1; /* verde */
+}
+
+.ccm-val.is-low{
+  color: #ffb4b4; /* rojo */
+}
+
+.ccm-val.is-eq{
+  opacity: 0.85;
+}
+
+.ccm-diff{
+  text-align: right;
+  font-weight: 900;
+}
+
+.ccm-diff.is-up{ color: #9cffb1; }     /* left mayor */
+.ccm-diff.is-down{ color: #ffb4b4; }   /* left menor */
+.ccm-diff.is-eq{ opacity: 0.75; }
+
+.ccm-legend{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+  opacity: 0.95;
+}
+
+.ccm-chip{
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(9,20,40,0.55);
+}
+
+.ccm-chip.high{ color: #9cffb1; }
+.ccm-chip.low{ color: #ffb4b4; }
+.ccm-chip.eq{ opacity: 0.8; }
+
+/* Responsive */
+@media (max-width: 900px){
+  .ccm-heroes{ grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px){
+  /* En móvil quitamos la columna diferencia para que quepa */
+  .ccm-row{
+    grid-template-columns: 1.3fr 1fr 1fr;
+  }
+  .ccm-diff{ display: none; }
+}
